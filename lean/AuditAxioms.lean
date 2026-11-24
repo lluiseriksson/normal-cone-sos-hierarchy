@@ -1,0 +1,22 @@
+import NormalConeSOS
+
+#print axioms NormalConeSOS.pythagorean_tilted_identity
+#print axioms NormalConeSOS.beta_sq_gt_four_alpha_sq
+#print axioms NormalConeSOS.beta_sq_sub_local_sq
+#print axioms NormalConeSOS.two_square_sos_identity
+#print axioms NormalConeSOS.bob_tilted_rank2_factorization
+#print axioms NormalConeSOS.bob_tilted_second_weight_pos
+#print axioms NormalConeSOS.cauchy_schwarz_schur
+#print axioms NormalConeSOS.schur_psd_implies_sum_bound
+#print axioms NormalConeSOS.positive_eta_schur_obstruction
+#print axioms NormalConeSOS.negative_eta_left_obstruction
+#print axioms NormalConeSOS.negative_eta_schur_margin_nonneg
+#print axioms NormalConeSOS.convex_comb_psd_preserved
+#print axioms NormalConeSOS.visibility_dual_weights_sum
+#print axioms NormalConeSOS.visibility_dual_weights_pos
+#print axioms NormalConeSOS.visibility_dual_S_exact_match
+#print axioms NormalConeSOS.visibility_dual_D_cancels
+#print axioms NormalConeSOS.visibility_global_lower_bound
+#print axioms NormalConeSOS.visibility_uniqueness_at_origin
+#print axioms NormalConeSOS.tribonacci_facet_concurrency_det
+#print axioms NormalConeSOS.weak_sdp_duality_soundness

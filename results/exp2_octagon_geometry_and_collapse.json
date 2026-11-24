@@ -1,0 +1,316 @@
+{
+  "experiment": "exp2_octagon_geometry_and_collapse",
+  "num_extreme_points": 5,
+  "vertex_counts_by_k": {
+    "11/5": 8,
+    "2": 8,
+    "7/4": 6,
+    "3/2": 6,
+    "5/4": 6
+  },
+  "tribonacci_transition_k_approx": 1.839286755214161,
+  "tribonacci_transition_alpha_approx": 0.42748072581142393,
+  "records": [
+    {
+      "k": "11/5",
+      "alpha": "14/103",
+      "alpha_float": 0.13592233009708737,
+      "beta": "292/103",
+      "beta_float": 2.8349514563106797,
+      "p_star": [
+        "7/73",
+        "0",
+        "7/103",
+        "7/103",
+        "73/103",
+        "73/103",
+        "5280/7519",
+        "-5280/7519"
+      ],
+      "num_polygon_vertices": 8,
+      "polygon_vertices": [
+        [
+          "618/803",
+          "0"
+        ],
+        [
+          "37183/79643",
+          "53045/79643"
+        ],
+        [
+          "721/12799",
+          "10609/12799"
+        ],
+        [
+          "-43363/62707",
+          "31827/62707"
+        ],
+        [
+          "-515/584",
+          "0"
+        ],
+        [
+          "-43363/62707",
+          "-31827/62707"
+        ],
+        [
+          "721/12799",
+          "-10609/12799"
+        ],
+        [
+          "37183/79643",
+          "-53045/79643"
+        ]
+      ],
+      "polygon_area_exact": "10751763148838263/5624997656889512",
+      "polygon_area_float": 1.9114253560033887,
+      "eta_loc_min": "-515/584",
+      "eta_loc_max": "618/803",
+      "zeta_loc_max": "103/128",
+      "eta_s4_min": "-721/5329",
+      "eta_s4_max": "0",
+      "s4_segment_fraction_of_eta_axis": 0.0819257880037239,
+      "eta_1ab_full_min_approx": -0.75698,
+      "eta_1ab_full_max_approx": 0.65519,
+      "full_1ab_fraction_of_eta_axis": 0.8551,
+      "optimal_visibility_ratio": "55/73",
+      "optimal_visibility_float": 0.7534246575342466
+    },
+    {
+      "k": "2",
+      "alpha": "2/7",
+      "alpha_float": 0.2857142857142857,
+      "beta": "20/7",
+      "beta_float": 2.857142857142857,
+      "p_star": [
+        "1/5",
+        "0",
+        "1/7",
+        "1/7",
+        "5/7",
+        "5/7",
+        "24/35",
+        "-24/35"
+      ],
+      "num_polygon_vertices": 8,
+      "polygon_vertices": [
+        [
+          "7/10",
+          "0"
+        ],
+        [
+          "21/65",
+          "49/65"
+        ],
+        [
+          "7/59",
+          "49/59"
+        ],
+        [
+          "-91/115",
+          "49/115"
+        ],
+        [
+          "-14/15",
+          "0"
+        ],
+        [
+          "-91/115",
+          "-49/115"
+        ],
+        [
+          "7/59",
+          "-49/59"
+        ],
+        [
+          "21/65",
+          "-49/65"
+        ]
+      ],
+      "polygon_area_exact": "4794797/2646150",
+      "polygon_area_float": 1.8119898720783025,
+      "eta_loc_min": "-14/15",
+      "eta_loc_max": "7/10",
+      "zeta_loc_max": "7/9",
+      "eta_s4_min": "-7/25",
+      "eta_s4_max": "0",
+      "s4_segment_fraction_of_eta_axis": 0.17142857142857143,
+      "eta_1ab_full_min_approx": -0.80618,
+      "eta_1ab_full_max_approx": 0.59438,
+      "full_1ab_fraction_of_eta_axis": 0.85749,
+      "optimal_visibility_ratio": "4/5",
+      "optimal_visibility_float": 0.8
+    },
+    {
+      "k": "7/4",
+      "alpha": "46/89",
+      "alpha_float": 0.5168539325842697,
+      "beta": "260/89",
+      "beta_float": 2.9213483146067416,
+      "p_star": [
+        "23/65",
+        "0",
+        "23/89",
+        "23/89",
+        "65/89",
+        "65/89",
+        "3696/5785",
+        "-3696/5785"
+      ],
+      "num_polygon_vertices": 6,
+      "polygon_vertices": [
+        [
+          "267/455",
+          "0"
+        ],
+        [
+          "9167/69615",
+          "7921/9945"
+        ],
+        [
+          "-68797/75595",
+          "23763/75595"
+        ],
+        [
+          "-712/715",
+          "0"
+        ],
+        [
+          "-68797/75595",
+          "-23763/75595"
+        ],
+        [
+          "9167/69615",
+          "-7921/9945"
+        ]
+      ],
+      "polygon_area_exact": "89533177907/57888005175",
+      "polygon_area_float": 1.5466620008123297,
+      "eta_loc_min": "-712/715",
+      "eta_loc_max": "267/455",
+      "zeta_loc_max": "89/121",
+      "eta_s4_min": "-2047/4225",
+      "eta_s4_max": "0",
+      "s4_segment_fraction_of_eta_axis": 0.30613656006914436,
+      "eta_1ab_full_min_approx": -0.8706,
+      "eta_1ab_full_max_approx": 0.49742,
+      "full_1ab_fraction_of_eta_axis": 0.8644,
+      "optimal_visibility_ratio": "56/65",
+      "optimal_visibility_float": 0.8615384615384616
+    },
+    {
+      "k": "3/2",
+      "alpha": "14/17",
+      "alpha_float": 0.8235294117647058,
+      "beta": "52/17",
+      "beta_float": 3.0588235294117645,
+      "p_star": [
+        "7/13",
+        "0",
+        "7/17",
+        "7/17",
+        "13/17",
+        "13/17",
+        "120/221",
+        "-120/221"
+      ],
+      "num_polygon_vertices": 6,
+      "polygon_vertices": [
+        [
+          "17/39",
+          "0"
+        ],
+        [
+          "-17/1287",
+          "289/429"
+        ],
+        [
+          "-1479/1469",
+          "289/1469"
+        ],
+        [
+          "-68/65",
+          "0"
+        ],
+        [
+          "-1479/1469",
+          "-289/1469"
+        ],
+        [
+          "-17/1287",
+          "-289/429"
+        ]
+      ],
+      "polygon_area_exact": "11108293/9453015",
+      "polygon_area_float": 1.1751058260248186,
+      "eta_loc_min": "-68/65",
+      "eta_loc_max": "17/39",
+      "zeta_loc_max": "17/26",
+      "eta_s4_min": "-119/169",
+      "eta_s4_max": "0",
+      "s4_segment_fraction_of_eta_axis": 0.4751131221719457,
+      "eta_1ab_full_min_approx": -0.93352,
+      "eta_1ab_full_max_approx": 0.37002,
+      "full_1ab_fraction_of_eta_axis": 0.87955,
+      "optimal_visibility_ratio": "12/13",
+      "optimal_visibility_float": 0.9230769230769231
+    },
+    {
+      "k": "5/4",
+      "alpha": "62/49",
+      "alpha_float": 1.2653061224489797,
+      "beta": "164/49",
+      "beta_float": 3.3469387755102042,
+      "p_star": [
+        "31/41",
+        "0",
+        "31/49",
+        "31/49",
+        "41/49",
+        "41/49",
+        "720/2009",
+        "-720/2009"
+      ],
+      "num_polygon_vertices": 6,
+      "polygon_vertices": [
+        [
+          "49/205",
+          "0"
+        ],
+        [
+          "-4067/23165",
+          "2401/4633"
+        ],
+        [
+          "-29743/28249",
+          "2401/28249"
+        ],
+        [
+          "-392/369",
+          "0"
+        ],
+        [
+          "-29743/28249",
+          "-2401/28249"
+        ],
+        [
+          "-4067/23165",
+          "-2401/4633"
+        ]
+      ],
+      "polygon_area_exact": "4387013561/5889492765",
+      "polygon_area_float": 0.7448881824035996,
+      "eta_loc_min": "-392/369",
+      "eta_loc_max": "49/205",
+      "zeta_loc_max": "49/164",
+      "eta_s4_min": "-1519/1681",
+      "eta_s4_max": "0",
+      "s4_segment_fraction_of_eta_axis": 0.6943753111000498,
+      "eta_1ab_full_min_approx": -0.98323,
+      "eta_1ab_full_max_approx": 0.20454,
+      "full_1ab_fraction_of_eta_axis": 0.91271,
+      "optimal_visibility_ratio": "40/41",
+      "optimal_visibility_float": 0.975609756097561
+    }
+  ]
+}

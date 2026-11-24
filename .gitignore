@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+lean/.lake/
+lean/lake-manifest.json
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz

@@ -1,0 +1,6 @@
+name = "normal-cone-sos"
+version = "1.0.0"
+defaultTargets = ["NormalConeSOS"]
+
+[[lean_lib]]
+name = "NormalConeSOS"
