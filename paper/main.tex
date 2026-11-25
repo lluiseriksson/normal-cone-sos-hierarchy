@@ -222,11 +222,11 @@ formally proved in Lean~4 as \texttt{NormalConeSOS.\allowbreak tribonacci\_facet
 To verify completeness across all $16$ local vertices over the entire range $k \in (1, 1+\sqrt{2})$, we solve the pairwise intersections of $\{F_1, F_2, F_3, F_4\}$ and the symmetry axis $\zeta = 0$ explicitly over $\QQ(k)$:
 \begin{align*}
   V_R &= \left(\frac{(k-1)D}{k(k^2+1)},\, 0\right), &
-  V_{12} &= \left(\frac{D(2k^3-3k^2-1)}{(k^2+1)Q_1},\, \frac{D^2}{(k^2+1)Q_1}\right), \\
-  V_{13} &= \left(\frac{D(k^3-k-2)}{k(k^2+1)Q_2},\, \frac{D^2}{(k^2+1)Q_2}\right), &
-  V_{23} &= \left(\frac{-D(k^2-2k-1)}{Q_3},\, \frac{D^2}{Q_3}\right), \\
-  V_{34} &= \left(\frac{D(k^3-3k^2-3k-3)}{(k^2+1)Q_4},\, \frac{(k-1)D^2}{(k^2+1)Q_4}\right), &
-  V_L &= \left(\frac{-2D}{(k+1)(k^2+1)},\, 0\right),
+  V_L &= \left(\frac{-2D}{(k+1)(k^2+1)},\, 0\right), \\
+  V_{12} &= \left(\frac{D(2k^3-3k^2-1)}{(k^2+1)Q_1},\, \frac{D^2}{(k^2+1)Q_1}\right), &
+  V_{13} &= \left(\frac{D(k^3-k-2)}{k(k^2+1)Q_2},\, \frac{D^2}{(k^2+1)Q_2}\right), \\
+  V_{23} &= \left(\frac{-D(k^2-2k-1)}{Q_3},\, \frac{D^2}{Q_3}\right), &
+  V_{34} &= \left(\frac{D(k^3-3k^2-3k-3)}{(k^2+1)Q_4},\, \frac{(k-1)D^2}{(k^2+1)Q_4}\right),
 \end{align*}
 where every denominator polynomial $Q_1 = 2k^3 - k^2 + 1$, $Q_2 = k^2 + 2k + 3$, $Q_3 = k^4 + 6k^3 - 2k - 1 = (k^4-1) + 2k(3k^2-1)$, and $Q_4 = k^3 + k^2 + 5k + 1$ is strictly positive on $k > 1$.
 Evaluating all $16$ linear forms $L_{a_0,a_1,b_0,b_1}$ at these six upper candidate vertices yields exact rational factorizations over $\QQ(k)$:
