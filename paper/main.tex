@@ -56,7 +56,7 @@ We resolve the algebraic, polyhedral, semidefinite-hierarchy, and noise-robustne
 First, we introduce a dense rational parameterization $k \in \QQ \cap (1, 1+\sqrt{2})$ via $\alpha(k) = 2(1+2k-k^2)/(k^2+2k-1)$ and $\beta(k) = 4(k^2+1)/(k^2+2k-1)$ satisfying $\beta^2 = 8 + 2\alpha^2$ identically, rendering all eight coordinates of $p^*(k) \in \QQ^8$, the normal-cone basis $\{I_\alpha, S_\alpha, D_\alpha\}$, and every extreme ray of $\calN(p^*(k))$ strictly rational, while compressing the five-square Bamps--Pironio tilted-CHSH decomposition to a universal two-square identity $I_\alpha^2 + Q_\alpha^2 \equiv (8+2\alpha^2)I$.
 Second, we prove that the cross-sectional polygon $\calP(k)$ of $\calN(p^*(k))$ undergoes an exact combinatorial octagon-to-hexagon phase transition governed by the cleared-denominator concurrency determinant $2(k^2+2k-1)^2(k^3-k^2-k-1)$, occurring precisely at the Tribonacci constant $k_{\mathrm{trib}} \approx 1.839287$.
 Third, we uncover a sharp structural contrast inside the Navascu\'es--Pironio--Ac\'in (NPA) hierarchy on $\calN(p^*(k))$: restricting to the four-dimensional $N_3$-free annihilator subspace $\calS_4 = \operatorname{span}\{N_1, N_2, N_4, N_5\}$ collapses the sum-of-squares (SOS) cone onto the zero-area one-dimensional segment $\conv\{I_\alpha, \calB_{\mathrm{Bob}}(\alpha)\} = [-8\alpha/\beta^2, 0]\times\{0\}$, whereas restoring the fifth Level-$(1+AB)$ annihilator $N_3$ inflates $\mathcal{N}_{\mathrm{SOS}}^{(1+AB)}(p^*(2))$ into a curved two-dimensional spectrahedron covering $80.0\%$ of $\calP(2)$, nested strictly inside the NPA-2 spectrahedron $\mathcal{N}_{\mathrm{SOS}}^{(2)}(p^*(2))$ ($97.9\%$ area) and the true octagon $\calP(2)$.
-Using exact rational $LDL^\top$ moment matrices and exact non-commutative SOS replays backed by weak SDP duality (Lean~4 Theorem~20), we establish the unconditional strict four-tier chain $\emptyset = \mathcal{N}_{\mathrm{SOS}}^{(1)}(p^*(2)) \subsetneq \mathcal{N}_{\mathrm{SOS}}^{(1+AB)}(p^*(2)) \subsetneq \mathcal{N}_{\mathrm{SOS}}^{(2)}(p^*(2)) \subsetneq \calN(p^*(2))$ with zero floating-point trust on every inclusion.
+Using an algebraic Level-1 annihilator proof ($\mathcal{N}_{\mathrm{SOS}}^{(1)}(p^*(k)) = \emptyset$ for all $k$) paired with exact rational $LDL^\top$ moment matrices and exact non-commutative SOS replays backed by weak SDP duality (Lean~4 Theorem~20), we establish the unconditional strict four-tier chain $\emptyset = \mathcal{N}_{\mathrm{SOS}}^{(1)}(p^*(2)) \subsetneq \mathcal{N}_{\mathrm{SOS}}^{(1+AB)}(p^*(2)) \subsetneq \mathcal{N}_{\mathrm{SOS}}^{(2)}(p^*(2)) \subsetneq \calN(p^*(2))$ with zero floating-point trust on every inclusion.
 Fourth, we construct an explicit four-vertex rational linear-programming dual certificate proving that the canonical Alice-tilted CHSH functional $I_\alpha$ uniquely minimizes the white-noise visibility threshold $v(\calB) = \beta_{\mathrm{loc}}(\calB)/\beta_Q(\calB) \ge (2+\alpha)/\beta$ across the entire three-dimensional normal cone $\calN(p^*(k))$.
 All results are backed by 13 standalone exact-$\QQ$ JSON certificates, four reproducible benchmarks, and a 42-attack adversarial red-team test suite.
 \end{abstract}
@@ -201,24 +201,39 @@ whose determinant factors identically over $\ZZ[k]$ as
 \end{equation}
 By $\zeta \mapsto -\zeta$ symmetry, the reflected triple $L_{(-1,1,-1,-1)}$, $L_{(1,-1,-1,1)}$, $L_{(1,1,1,1)}$ satisfies the identical factorization up to sign. Consequently, $\calP(k)$ undergoes an exact combinatorial phase transition at the Tribonacci constant $k_{\mathrm{trib}} \approx 1.839286755214$ ($\alpha_{\mathrm{trib}} \approx 0.427480726$), the unique real root of $k^3 - k^2 - k - 1 = 0$:
 \begin{itemize}[leftmargin=1.5em,itemsep=1pt]
-  \item For $k \in (k_{\mathrm{trib}}, 1+\sqrt{2})$ ($\alpha < \alpha_{\mathrm{trib}}$), $\calP(k)$ is a strictly convex \textbf{8-vertex octagon}.
-  \item For $k \in (1, k_{\mathrm{trib}})$ ($\alpha > \alpha_{\mathrm{trib}}$), the antipodal facets $L_{(-1,\pm 1,-1,-1)}$ become strictly redundant and $\calP(k)$ is a strictly convex \textbf{6-vertex hexagon}.
+  \item For $k \in (k_{\mathrm{trib}}, 1+\sqrt{2})$ ($\alpha < \alpha_{\mathrm{trib}}$), $\calP(k)$ is a strictly convex \textbf{8-vertex octagon} bounded by the four upper facets $F_1 = L_{(1,1,1,-1)}$, $F_2 = L_{(-1,-1,-1,-1)}$, $F_3 = L_{(1,-1,1,1)}$, $F_4 = L_{(-1,1,1,-1)}$ and their four $\zeta \mapsto -\zeta$ reflections.
+  \item For $k \in (1, k_{\mathrm{trib}})$ ($\alpha > \alpha_{\mathrm{trib}}$), the antipodal facets $F_2 = L_{(-1,-1,-1,-1)}$ and $F_2' = L_{(-1,1,-1,-1)}$ become strictly redundant and $\calP(k)$ is a strictly convex \textbf{6-vertex hexagon} bounded by $\{F_1, F_3, F_4\}$ and their reflections; at the exact transition point $k = k_{\mathrm{trib}}$, $F_2$ and $F_2'$ pass through the vertices $F_1 \cap F_3$ and $F_1' \cap F_3'$ (triple concurrency), so $\calP(k_{\mathrm{trib}})$ is also a 6-vertex hexagon.
 \end{itemize}
 \end{theorem}
 
 \begin{proof}
-Substituting~\eqref{eq:rational-param} into $L_{a_0,a_1,b_0,b_1}(\eta,\zeta) = c_0 + c_1 \eta + c_2 \zeta$ for the three vertices yields
+Substituting~\eqref{eq:rational-param} into $L_{a_0,a_1,b_0,b_1}(\eta,\zeta) = c_0 + c_1 \eta + c_2 \zeta$ for the four upper-half-plane candidate facets $F_1 = L_{(1,1,1,-1)}$, $F_2 = L_{(-1,-1,-1,-1)}$, $F_3 = L_{(1,-1,1,1)}$, and $F_4 = L_{(-1,1,1,-1)}$ yields
 \begin{align}
-  L_{(-1,-1,-1,-1)} &= \frac{8}{D^2}\bigl(-D + (k^2-1)\eta + 2k^2 \zeta\bigr),\\
-  L_{(1,1,1,-1)} &= \frac{4(k-1)}{D^2}\bigl(-(k-1)D + k(k^2+1)\eta + (k^2+1)\zeta\bigr),\\
-  L_{(1,-1,1,1)} &= \frac{4(k-1)^2}{D^2}\bigl(-D - 2k\eta + (k+1)^2\zeta\bigr).
+  F_1 &= \frac{4(k-1)}{D^2}\bigl(-(k-1)D + k(k^2+1)\eta + (k^2+1)\zeta\bigr),\\
+  F_2 &= \frac{8}{D^2}\bigl(-D + (k^2-1)\eta + 2k^2 \zeta\bigr),\\
+  F_3 &= \frac{4(k-1)^2}{D^2}\bigl(-D - 2k\eta + (k+1)^2\zeta\bigr),\\
+  F_4 &= \frac{4}{D^2}\bigl(-2D - (k+1)(k^2+1)\eta + (k-1)(k^2+1)\zeta\bigr).
 \end{align}
 Factoring $-D$ from column $1$ of $M(k)$ and subtracting row $1$ from row $3$ and $(k-1)$ times row $1$ from row $2$ produces a $2\times 2$ cofactor whose first column is $(D, -D)^\top$, yielding
 \begin{equation}
   \det M(k) = (-D)\cdot\bigl(-2D(k^3-k^2-k-1)\bigr) = 2D^2(k^3-k^2-k-1),
 \end{equation}
 formally proved in Lean~4 as \texttt{NormalConeSOS.\allowbreak tribonacci\_facet\_concurrency\_det}.
-At the intersection point $(\eta_*, \zeta_*)$ of $L_{(1,1,1,-1)} = 0$ and $L_{(1,-1,1,1)} = 0$, the sign of $L_{(-1,-1,-1,-1)}(\eta_*,\zeta_*)$ matches the sign of $\det M(k) \propto k^3 - k^2 - k - 1$: positive (cutting off $(\eta_*,\zeta_*)$ to form an octagon) for $k > k_{\mathrm{trib}}$, and strictly negative (redundant facet, leaving a hexagon) for $1 < k < k_{\mathrm{trib}}$.
+To verify completeness across all $16$ local vertices over the entire range $k \in (1, 1+\sqrt{2})$, we solve the pairwise intersections of $\{F_1, F_2, F_3, F_4\}$ and the symmetry axis $\zeta = 0$ explicitly over $\QQ(k)$:
+\begin{align*}
+  V_R &= \left(\frac{(k-1)D}{k(k^2+1)},\, 0\right), &
+  V_{12} &= \left(\frac{D(2k^3-3k^2-1)}{(k^2+1)Q_1},\, \frac{D^2}{(k^2+1)Q_1}\right), \\
+  V_{13} &= \left(\frac{D(k^3-k-2)}{k(k^2+1)Q_2},\, \frac{D^2}{(k^2+1)Q_2}\right), &
+  V_{23} &= \left(\frac{-D(k^2-2k-1)}{Q_3},\, \frac{D^2}{Q_3}\right), \\
+  V_{34} &= \left(\frac{D(k^3-3k^2-3k-3)}{(k^2+1)Q_4},\, \frac{(k-1)D^2}{(k^2+1)Q_4}\right), &
+  V_L &= \left(\frac{-2D}{(k+1)(k^2+1)},\, 0\right),
+\end{align*}
+where every denominator polynomial $Q_1 = 2k^3 - k^2 + 1$, $Q_2 = k^2 + 2k + 3$, $Q_3 = k^4 + 6k^3 - 2k - 1 = (k^4-1) + 2k(3k^2-1)$, and $Q_4 = k^3 + k^2 + 5k + 1$ is strictly positive on $k > 1$.
+Evaluating all $16$ linear forms $L_{a_0,a_1,b_0,b_1}$ at these six upper candidate vertices yields exact rational factorizations over $\QQ(k)$:
+(i)~all $8$ non-facet local vertices $\{(-1,-1,1,\pm 1), (-1,1,-1,1), (-1,1,1,1), (1,\pm 1,-1,-1), (1,-1,1,-1), (1,1,-1,1)\}$ evaluate strictly negatively at every point in $\{V_R, V_{12}, V_{13}, V_{23}, V_{34}, V_L\}$ for all $k > 1$ (every denominator is strictly positive and every numerator factors as a negative integer times positive factors in $k, k-1, k+1, k^2+1, k^2+k+1$);
+(ii)~since $k < 1+\sqrt{2} < 3$, $k^3 - 3k^2 - k - 1 = k^2(k-3) - (k+1) < 0$ strictly, ensuring $F_2(V_{34}) = \frac{16(k^3-3k^2-k-1)}{(k^2+1)Q_4} < 0$ and $F_4(V_{23}) = \frac{8(k^3-3k^2-k-1)}{Q_3} < 0$, while $F_4(V_R) = -4/k < 0$, $F_4(V_{12}) = -\frac{8k(k-1)}{Q_1} < 0$, $F_4(V_{13}) = -\frac{8(k+1)}{k Q_2} < 0$, $F_1(V_{34}) = -\frac{8(k-1)(k+1)}{Q_4} < 0$, $F_1(V_L) = -\frac{4(k-1)}{k+1} < 0$, $F_3(V_R) = -\frac{4(k-1)^2}{k^2+1} < 0$, and $F_3(V_L) = -\frac{4(k-1)^3}{(k+1)(k^2+1)} < 0$, proving that $F_1, F_3, F_4$ (and their reflections) are active and unclipped on all of $(1, 1+\sqrt{2})$;
+and (iii)~the only sign-changing evaluations are $F_2(V_{13}) = \frac{16 T(k)}{k(k^2+1)Q_2}$, $F_3(V_{12}) = -\frac{8(k-1)^2 T(k)}{(k^2+1)Q_1}$, and $F_1(V_{23}) = -\frac{8(k-1) T(k)}{Q_3}$, where $T(k) := k^3 - k^2 - k - 1$.
+For $k > k_{\mathrm{trib}}$ ($T(k) > 0$), $V_{13}$ is cut off by $F_2$ while $V_{12}, V_{23}$ are strictly feasible, yielding the strictly convex 8-vertex octagon $\{V_R, V_{12}, V_{23}, V_{34}, V_L, V_{34}', V_{23}', V_{12}'\}$; for $k < k_{\mathrm{trib}}$ ($T(k) < 0$), $F_2(V_{13}) < 0$ makes $F_2, F_2'$ strictly redundant, leaving the 6-vertex hexagon $\{V_R, V_{13}, V_{34}, V_L, V_{34}', V_{13}'\}$; and at $k = k_{\mathrm{trib}}$ ($T(k) = 0$), $V_{12} = V_{23} = V_{13}$ coalesce with triple concurrency, leaving the same 6-vertex hexagon. By $\zeta \mapsto -\zeta$ symmetry, all $16$ half-spaces are accounted for.
 \end{proof}
 
 \subsection{\texorpdfstring{$\calS_4$}{S\_4}-Subspace Collapse and Exact-\texorpdfstring{$\QQ$}{Q} Four-Tier NPA Separation}
@@ -273,8 +288,8 @@ Let $k \in \QQ \cap (1, 1+\sqrt{2})$ with $\alpha = \alpha(k) \in (0,2)$ and $\b
     \frac{8}{\beta} I - \calB_{\mathrm{Bob}}(\alpha) = \frac{\beta}{4}\!\left(N_1 + \frac{4\alpha}{\beta^2} N_5\right)^2 + \frac{8 - 2\alpha^2}{\beta^3}\, N_5^2.
     \label{eq:bob-2sq}
   \end{equation}
-  \item \textbf{Inflation by $N_3$ and Exact-$\QQ$ Four-Tier Strict Separation:}
-  Restoring the fifth Level-$(1+AB)$ annihilator $N_3$~\eqref{eq:N3} inflates the feasible SOS cone from the 1D segment~\eqref{eq:s4-segment} into a full two-dimensional curved spectrahedron $\mathcal{N}_{\mathrm{SOS}}^{(1+AB)}(p^*(k))$ strictly inside $\calP(k)$. At $k = 2$ ($\alpha = 2/7, \beta = 20/7$), every inclusion in the four-tier chain
+  \item \textbf{Algebraic Level-1 Emptiness, $N_3$ Inflation, and Exact-$\QQ$ Four-Tier Strict Separation:}
+  For \emph{every} $k \in (1, 1+\sqrt{2})$, the Level-$1$ SOS cone is unconditionally empty: $\mathcal{N}_{\mathrm{SOS}}^{(1)}(p^*(k)) = \emptyset$. Restoring the fifth Level-$(1+AB)$ annihilator $N_3$~\eqref{eq:N3} at $k = 2$ ($\alpha = 2/7, \beta = 20/7$) inflates the feasible SOS cone from the 1D segment~\eqref{eq:s4-segment} into a full two-dimensional curved spectrahedron $\mathcal{N}_{\mathrm{SOS}}^{(1+AB)}(p^*(2))$ strictly inside $\calP(2)$, and every inclusion in the four-tier chain
   \begin{equation}
     \emptyset = \mathcal{N}_{\mathrm{SOS}}^{(1)}(p^*(2))
     \;\subsetneq\; \mathcal{N}_{\mathrm{SOS}}^{(1+AB)}(p^*(2))
@@ -282,18 +297,28 @@ Let $k \in \QQ \cap (1, 1+\sqrt{2})$ with $\alpha = \alpha(k) \in (0,2)$ and $\b
     \;\subsetneq\; \calN(p^*(2))
     \label{eq:four-tier}
   \end{equation}
-  is strict and certified unconditionally in exact rational arithmetic $\QQ$ with zero floating-point trust:
+  is strict and proved unconditionally with zero floating-point trust:
   \begin{itemize}[leftmargin=1.5em,itemsep=1pt]
-    \item $\mathcal{N}_{\mathrm{SOS}}^{(1)} \subsetneq \mathcal{N}_{\mathrm{SOS}}^{(1+AB)}$: witnessed by exact 2-square SOS on~\eqref{eq:s4-segment} and exact 5-square Level-$(1+AB)$ SOS certificates at $(1/2, 0)$, $(0, 1/2)$, and $(1/5, 1/5)$.
-    \item $\mathcal{N}_{\mathrm{SOS}}^{(1+AB)} \subsetneq \mathcal{N}_{\mathrm{SOS}}^{(2)}$: dual-certified at $(13/20, 0)$, $(-9/10, 0)$, and $(0, 7/10)$, each carrying BOTH a strictly positive-definite $9\times 9$ rational $LDL^\top$ NPA-$(1+AB)$ moment matrix $\Gamma_1 \succ 0$ with $\calB\cdot\gamma(\Gamma_1) > \beta_Q(\calB)$ AND an exact 9-square NPA-2 SOS decomposition $\sum_{j=1}^9 w_j P_j^\dagger P_j \equiv \beta_Q I - \calB$.
-    \item $\mathcal{N}_{\mathrm{SOS}}^{(2)} \subsetneq \calN(p^*(2))$: witnessed at extreme octagon vertices $V_2 = (21/65, 49/65)$ and $V_5 = (-14/15, 0)$ by strictly positive-definite $13\times 13$ rational $LDL^\top$ NPA-2 moment matrices $\Gamma_2 \succ 0$ with $\calB\cdot\gamma(\Gamma_2) - \beta_Q(\calB) = 5277/325000$ and $91/12500$ respectively.
+    \item $\emptyset = \mathcal{N}_{\mathrm{SOS}}^{(1)}(p^*(k)) \subsetneq \mathcal{N}_{\mathrm{SOS}}^{(1+AB)}(p^*(k))$: Level-1 emptiness holds for all $k \in (1, 1+\sqrt{2})$ by exact rank-nullity on $\mathcal{O}_1 = \{I, A_0, A_1, B_0, B_1\}$ (proof below), while non-emptiness of $\mathcal{N}_{\mathrm{SOS}}^{(1+AB)}$ is witnessed by exact 2-square SOS on~\eqref{eq:s4-segment} for all rational $k$ and by exact 5-square Level-$(1+AB)$ SOS certificates at $(1/2, 0)$, $(0, 1/2)$, and $(1/5, 1/5)$ for $k=2$.
+    \item $\mathcal{N}_{\mathrm{SOS}}^{(1+AB)}(p^*(2)) \subsetneq \mathcal{N}_{\mathrm{SOS}}^{(2)}(p^*(2))$: dual-certified at $(13/20, 0)$, $(-9/10, 0)$, and $(0, 7/10)$, each carrying BOTH a strictly positive-definite $9\times 9$ rational $LDL^\top$ NPA-$(1+AB)$ moment matrix $\Gamma_1 \succ 0$ with $\calB\cdot\gamma(\Gamma_1) > \beta_Q(\calB)$ AND an exact 9-square NPA-2 SOS decomposition $\sum_{j=1}^9 w_j P_j^\dagger P_j \equiv \beta_Q I - \calB$.
+    \item $\mathcal{N}_{\mathrm{SOS}}^{(2)}(p^*(2)) \subsetneq \calN(p^*(2))$: witnessed at extreme octagon vertices $V_2 = (21/65, 49/65)$ and $V_5 = (-14/15, 0)$ by strictly positive-definite $13\times 13$ rational $LDL^\top$ NPA-2 moment matrices $\Gamma_2 \succ 0$ with $\calB\cdot\gamma(\Gamma_2) - \beta_Q(\calB) = 5277/325000$ and $91/12500$ respectively.
   \end{itemize}
 \end{enumerate}
 \end{theorem}
 
 \begin{proof}[Proof and Formal Verification]
-For Part~(1), all algebraic identities~\eqref{eq:bob-2sq}, the Titu/Schur inequality $(G_{00}+G_{11})G_{44} \ge (|G_{04}|+|G_{14}|)^2$ given $G_{01}=0$, the strict positive-$\eta$ gap $(8\alpha - \beta^2 \eta)^2 < (8\alpha + (\beta^2 + 4\alpha\beta)\eta)^2$, left-endpoint negativity $8\alpha + \beta^2 \eta < 0$, nonnegativity of the Schur margin on $[-8\alpha/\beta^2, 0]$, and convexity preservation of PSD certificates are formally machine-checked in Lean~4 (\texttt{NormalConeSOS}, Theorems~5--12).
-For Part~(2), weak SDP duality guarantees that for any NPA level $\ell \in \{1+AB, 2\}$, any exact rational $LDL^\top$ moment matrix $\Gamma_\ell = L D L^\top$ ($D_i > 0$) satisfying all level-$\ell$ moment word-equivalences and $\Gamma_{00} = 1$, and any level-$\ell$ SOS $\beta_Q I - \calB = \sum_j w_j P_j^\dagger P_j$ ($w_j > 0$, $P_j \in \operatorname{span}(\mathcal{O}_\ell)$), evaluating the moment functional yields
+For Part~(1), expanding $\mathbf{N}_{\calS_4}^\top G\,\mathbf{N}_{\calS_4} = \beta_Q I - \calB(\eta,\zeta)$ in the involutive word basis of $\QQ\langle A_0, A_1, B_0, B_1\rangle$ gives $25$ linear equations whose non-Bell word coefficients vanish identically. Reading these directly:
+(i)~the coefficient of $A_0 B_0 B_1$ is $\frac{4}{\beta^2} G_{01} = 0$, forcing $G_{01} = 0$;
+(ii)~the coefficient of $A_1 B_0 B_1$ is $-\frac{4}{\beta} G_{03} = 0$, forcing $G_{03} = 0$;
+(iii)~the sum and difference of the $A_0 A_1 B_0 B_1$ and $A_0 A_1 B_1 B_0$ coefficients yield $2G_{13} - \beta G_{34} = 0$ and $2G_{14} = \beta G_{33}$, while the $A_0 A_1$ coefficient (with $G_{03}=0$) gives $4G_{13} + (2-\alpha^2)\beta G_{34} = 0$; substituting $2G_{13} = \beta G_{34}$ yields $(4-\alpha^2)\beta G_{34} = 0$, forcing $G_{34} = G_{13} = 0$ since $\alpha \in (0,2)$;
+(iv)~the coefficient of $B_0 B_1$ gives $\frac{4}{\beta^2}(G_{00}+G_{11}) - G_{44} = 0$;
+(v)~with $G_{03} = G_{13} = G_{34} = 0$, the coefficient of the Bell word $A_1$ in $\mathbf{N}_{\calS_4}^\top G\,\mathbf{N}_{\calS_4}$ vanishes identically, forcing $\zeta \frac{\beta^2}{8} = 0 \implies \zeta = 0$;
+and (vi)~matching the remaining Bell words $I$, $A_0$, $B_0+B_1$, and $A_1(B_0-B_1)$ uniquely determines~\eqref{eq:s4-forced} (independently cross-checked symbolically over $\QQ(k)$).
+All subsequent algebraic identities~\eqref{eq:bob-2sq}, the Titu/Schur inequality $(G_{00}+G_{11})G_{44} \ge (|G_{04}|+|G_{14}|)^2$ given $G_{01}=0$, the strict positive-$\eta$ gap $(8\alpha - \beta^2 \eta)^2 < (8\alpha + (\beta^2 + 4\alpha\beta)\eta)^2$, left-endpoint negativity $8\alpha + \beta^2 \eta < 0$, nonnegativity of the Schur margin on $[-8\alpha/\beta^2, 0]$, and convexity preservation of PSD certificates are formally machine-checked in Lean~4 (\texttt{NormalConeSOS}, Theorems~5--12).
+
+For Part~(2), we first prove $\mathcal{N}_{\mathrm{SOS}}^{(1)}(p^*(k)) = \emptyset$ for \emph{all} $k \in (1, 1+\sqrt{2})$. On the unique optimal two-qubit realization $|\psi_\theta\rangle = \cos\theta\,|00\rangle + \sin\theta\,|11\rangle$ ($\cos 2\theta = \alpha/\sqrt{4+\alpha^2} > 0$, $\sin 2\theta = \sqrt{(4-\alpha^2)/(4+\alpha^2)} > 0$) with $A_0 = Z_A$, $A_1 = X_A$, $B_0 = \cos\mu\, Z_B + \sin\mu\, X_B$, $B_1 = \cos\mu\, Z_B - \sin\mu\, X_B$ ($\cos\mu = 2/\beta$, $\sin\mu = \sqrt{4+2\alpha^2}/\beta > 0$), the Level-$1$ operator set $\mathcal{O}_1 = \{I, A_0, A_1, B_0, B_1\}$ spans all of $\mathbb{C}^4$ when applied to $|\psi_\theta\rangle$: $\{I|\psi_\theta\rangle, A_0|\psi_\theta\rangle\}$ spans $\operatorname{span}\{|00\rangle, |11\rangle\}$ (since $\cos\theta, \sin\theta > 0$), while $A_1|\psi_\theta\rangle = \cos\theta|10\rangle + \sin\theta|01\rangle$ and $\frac{1}{2\sin\mu}(B_0 - B_1)|\psi_\theta\rangle = \sin\theta|10\rangle + \cos\theta|01\rangle$ span $\operatorname{span}\{|10\rangle, |01\rangle\}$ with determinant $\cos^2\theta - \sin^2\theta = \cos 2\theta > 0$. By rank-nullity, the Level-$1$ annihilator space $\{P \in \operatorname{span}(\mathcal{O}_1) : P|\psi_\theta\rangle = 0\}$ is strictly one-dimensional, spanned by $N_1 = A_0 - \frac{2}{\beta}(B_0 + B_1)$~\eqref{eq:N12}. Consequently, any Level-$1$ SOS decomposition $\beta_Q(\calB)\,I - \calB(\eta,\zeta) = \sum_j w_j P_j^\dagger P_j$ ($P_j \in \operatorname{span}(\mathcal{O}_1)$, $w_j \ge 0$) achieving equality at $p^*(k)$ must satisfy $P_j |\psi_\theta\rangle = 0$ for every $j$, forcing $\beta_Q(\calB)\,I - \calB(\eta,\zeta) = w N_1^2$ for some scalar $w \ge 0$. Expanding $w N_1^2 = w\bigl((1 + \frac{8}{\beta^2})I + \frac{4}{\beta^2}(B_0 B_1 + B_1 B_0) - \frac{4}{\beta} A_0(B_0 + B_1)\bigr)$ exhibits a non-Bell word coefficient $\frac{4w}{\beta^2}$ on $B_0 B_1 + B_1 B_0$; because $\beta_Q I - \calB(\eta,\zeta)$ contains no $B_0 B_1$ term, this forces $w = 0$ and $\beta_Q I - \calB(\eta,\zeta) = 0$, contradicting the nonzero correlator terms of $\calB(\eta,\zeta)$ (e.g.\ the $A_1(B_0-B_1)$ coefficient is $2 \neq 0$ for all $(\eta,\zeta)$). Hence $\mathcal{N}_{\mathrm{SOS}}^{(1)}(p^*(k)) = \emptyset$ identically.
+
+For the remaining inclusions in~\eqref{eq:four-tier}, weak SDP duality guarantees that for any NPA level $\ell \in \{1+AB, 2\}$, any exact rational $LDL^\top$ moment matrix $\Gamma_\ell = L D L^\top$ ($D_i > 0$) satisfying all level-$\ell$ moment word-equivalences and $\Gamma_{00} = 1$, and any level-$\ell$ SOS $\beta_Q I - \calB = \sum_j w_j P_j^\dagger P_j$ ($w_j > 0$, $P_j \in \operatorname{span}(\mathcal{O}_\ell)$), evaluating the moment functional yields
 \begin{equation}
   \beta_Q - \calB\cdot\gamma(\Gamma_\ell) = \sum_j w_j\, v_j^\top \Gamma_\ell v_j = \sum_j w_j \sum_i D_i (L^\top v_j)_i^2 \ge 0,
   \label{eq:weak-duality}
